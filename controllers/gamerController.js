@@ -27,7 +27,9 @@ exports.getLastWeekLeaderBoard = async (req, res) => {
     try {
         const [rows, fields] = await pool.query("select * from GamersTable where datediff(current_date(), timeStamp) between 7 and 13 order by (gamerScore) desc limit 200");
         if (rows && rows.length > 0)
-            res.status(200).json({data : rows, message : "LastWeekLeaderBoard Route is working correctly"});
+            res.
+                status(200).
+                json({data : rows, message : "LastWeekLeaderBoard Route is working correctly"});
         else
             res.status(404).json({message: "not enough people to calculate"});
     } catch (error) {
